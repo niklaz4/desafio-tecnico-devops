@@ -2,7 +2,8 @@ name: Deploy PHP App para EC2
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   deploy:
@@ -35,6 +36,4 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           script: |
             docker pull ${{ secrets.DOCKER_USERNAME }}/php-app:latest
-            docker pull ${{ secrets.DOCKER_USERNAME }}/mysql:latest
             docker-compose up -d
-            
