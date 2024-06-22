@@ -1,4 +1,4 @@
-name: Deploy to EC2
+name: Deploy PHP Application
 
 on:
   push:
@@ -21,4 +21,8 @@ jobs:
 
       - name: SSH and Deploy
         run: |
-          ssh -o StrictHostKeyChecking=no ec2-user@${EC2_HOST} "sudo yum update -y && sudo yum install -y docker && sudo service docker start && sudo docker pull ${DOCKER_USERNAME}/my-app:latest && sudo docker-compose -f docker-compose.yml up -d"
+          ssh -o StrictHostKeyChecking=no ec2-user@${EC2_HOST} "sudo yum update -y && \
+            sudo yum install -y docker && \
+            sudo service docker start && \
+            sudo docker pull ${DOCKER_USERNAME}/my-app:latest && \
+            sudo docker-compose -f docker-compose.yml up -d"
