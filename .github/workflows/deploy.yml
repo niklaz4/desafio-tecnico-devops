@@ -10,25 +10,30 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
-      - name: Construir imagens Docker
+      - name: Login no Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Construir e fazer push das imagens Docker
         id: build-images
         uses: docker/build-push-action@v2
         with:
-          context: .  
-          push: true  
+          context: .
+          push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/php-app:latest
-          file: ./Dockerfile.mysql  
-          tags: ${{ secrets.DOCKER_USERNAME }}/mysql:latest
+          dockerfile: Dockerfile
 
-      - name: Executar Docker Compose na instância EC2
-        uses: joshuah/multi-ssh@v2
+      - name: SSH para EC2 e executar Docker Compose
+        uses: appleboy/ssh-action@v0.1.7
         with:
-          servers: ${{ secrets.EC2_HOST }}
-          user: root  # Substitua por um usuário com permissão para Docker
+          host: ${{ secrets.EC2_HOST }}
+          username: ec2-user
           key: ${{ secrets.EC2_KEY }}
-          commands: |
+          script: |
             docker pull ${{ secrets.DOCKER_USERNAME }}/php-app:latest
             docker pull ${{ secrets.DOCKER_USERNAME }}/mysql:latest
             docker-compose up -d
