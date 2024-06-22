@@ -1,0 +1,27 @@
+name: SSH and Deploy
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: SSH and Deploy
+      uses: appleboy/ssh-action@v0.1.7
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ec2-user
+        key: ${{ secrets.EC2_KEY }}
+        script: |
+          sudo yum update -y
+          sudo yum install -y docker
+          sudo service docker start
+          sudo docker pull ${{ secrets.DOCKER_USERNAME }}/my-app:latest
+          sudo docker-compose -f docker-compose.yml up -d
