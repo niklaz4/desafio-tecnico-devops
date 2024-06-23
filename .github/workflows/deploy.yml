@@ -10,22 +10,25 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Log in to Docker Hub
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-
-      - name: Pull Docker image
-        run: docker pull "${{ secrets.DOCKER_USERNAME }}/php-app:latest"
-
-      - name: SSH into EC2 instance and deploy
-        uses: appleboy/ssh-action@master
+      - name: Construir imagens Docker
+        id: build-images
+        uses: docker/build-push-action@v2
         with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ec2-user
+          context: .  
+          push: true  
+          tags: ${{ secrets.DOCKER_USERNAME }}/php-app:latest
+          file: ./Dockerfile.mysql  
+          tags: ${{ secrets.DOCKER_USERNAME }}/mysql:latest
+
+      - name: Executar Docker Compose na instância EC2
+        uses: joshuah/multi-ssh@v2
+        with:
+          servers: ${{ secrets.EC2_HOST }}
+          user: root  
           key: ${{ secrets.EC2_KEY }}
-          port: 22
-          script: |
-            cd /home/ec2-user/desafio-tecnico-devops
-            docker-compose down
+          commands: |
+            docker pull ${{ secrets.DOCKER_USERNAME }}/php-app:latest
+            docker pull ${{ secrets.DOCKER_USERNAME }}/mysql:latest
             docker-compose up -d
