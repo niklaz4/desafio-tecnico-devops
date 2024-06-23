@@ -18,13 +18,16 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
 
+    - name: Print SSH key fingerprint
+      run: ssh-add -l
+
     - name: Copy files via SCP
       run: |
-        scp -o StrictHostKeyChecking=no -r . ec2-user@seu-endereco-ec2.amazonaws.com:/home/ec2-user/app
+        scp -v -o StrictHostKeyChecking=no -r . ec2-user@ec2-3-145-34-202.us-east-2.compute.amazonaws.com:/home/ec2-user/app
 
     - name: SSH and deploy
       run: |
-        ssh -o StrictHostKeyChecking=no ec2-user@seu-endereco-ec2.amazonaws.com << 'EOF'
+        ssh -v -o StrictHostKeyChecking=no ec2-user@ec2-3-145-34-202.us-east-2.compute.amazonaws.com << 'EOF'
           cd /home/ec2-user/app
           sudo docker-compose down
           sudo docker-compose up -d
