@@ -21,14 +21,18 @@ jobs:
     - name: Print SSH key fingerprint
       run: ssh-add -l
 
+    - name: Create target directory on EC2
+      run: |
+        ssh -o StrictHostKeyChecking=no ec2-user@ec2-3-145-34-202.us-east-2.compute.amazonaws.com "mkdir -p /home/ec2-user/desafio-tecnico-devops"
+
     - name: Copy files via SCP
       run: |
-        scp -v -o StrictHostKeyChecking=no -r . ec2-user@ec2-3-145-34-202.us-east-2.compute.amazonaws.com:/home/ec2-user/app
+        scp -o StrictHostKeyChecking=no -r nginx.conf index.php docker-compose.yml Dockerfile Dockerfile.mysql ec2-user@ec2-3-145-34-202.us-east-2.compute.amazonaws.com:/home/ec2-user/desafio-tecnico-devops
 
     - name: SSH and deploy
       run: |
-        ssh -v -o StrictHostKeyChecking=no ec2-user@ec2-3-145-34-202.us-east-2.compute.amazonaws.com << 'EOF'
-          cd /home/ec2-user/app
+        ssh -o StrictHostKeyChecking=no ec2-user@ec2-3-145-34-202.us-east-2.compute.amazonaws.com << 'EOF'
+          cd /home/ec2-user/desafio-tecnico-devops
           sudo docker-compose down
           sudo docker-compose up -d
         EOF
