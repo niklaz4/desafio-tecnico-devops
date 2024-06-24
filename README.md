@@ -7,18 +7,18 @@ O objetivo deste teste prático é expor os meus conhecimentos em Docker, Nginx,
 <b> 1. Configuração do ambiente local usando estrutura de microsserviços:</b>
 - Instalação do <a href="https://hub.docker.com/">Docker</a> no ambiente local.<br>
 - Criação de um container Docker para executar um servidor web Nginx, na porta 80 (HTTP):<br>
-   <code> docker run --name nginx-container -p 80:80 -d nginx:latest</code><br>
-  - Criação de um contêiner para o PHP-FPM para receber as requisições do Nginx na porta 9000 para os arquivos .php do projeto:<br>
-  <code>  docker run --name php-fpm-container -d php:7.4-fpm</code><br>
-- Criação de um arquivo index.php simples que retorne o texto "Olá, mundo!":<br>
+   <code> docker run --name nginx-container -p 80:80 -d nginx:latest</code></p>
+  - Criação de um contêiner para o PHP-FPM para receber as requisições do Nginx na porta 9000 para os arquivos .php do projeto:</p>
+  <code>  docker run --name php-fpm-container -d php:7.4-fpm</code></p>
+- Criação de um arquivo index.php simples que retorne o texto "Olá, mundo!":</p>
     <code>
 	<?php
 	echo "Olá, mundo!";
 	?>
      </code><br>
-- Salvar o arquivo como `index.php` no diretório de trabalho.<br>
+- Salvar o arquivo como `index.php` no diretório de trabalho.</p>
  
-- Configuração do Nginx para servir o arquivo PHP, salvando-o como nginx.conf:<br>
+- Configuração do Nginx para servir o arquivo PHP, salvando-o como nginx.conf:</p>
 	<code>
     	server {
         	listen 80;
@@ -39,8 +39,8 @@ O objetivo deste teste prático é expor os meus conhecimentos em Docker, Nginx,
             	include fastcgi_params;
         	}
     	}
-    	</code><br>
-- Criar um ambiente Dockerfile, baseado na imagem php:7.4-fpm, que tem como o objetivo de servir aplicações PHP em ambientes de produção: <br>
+    	</code></p>
+- Criar um ambiente Dockerfile, baseado na imagem php:7.4-fpm, que tem como o objetivo de servir aplicações PHP em ambientes de produção: </p>
 <code> 
 FROM php:7.4-fpm
 COPY index.php /var/www/html/
@@ -51,7 +51,7 @@ FROM mysql:8.0
 ENV MYSQL_ROOT_PASSWORD=senha1234
 EXPOSE 3306
 </code><br>
-- Criar o docker-compose.yml, com o objetivo de definir e configurar múltiplos serviços que serão executados em contêineres Docker, permitindo que se comuniquem e interajam conforme necessário: <br>
+- Criar o docker-compose.yml, com o objetivo de definir e configurar múltiplos serviços que serão executados em contêineres Docker, permitindo que se comuniquem e interajam conforme necessário: </p>
 <code>
 version: '3.7'
 
