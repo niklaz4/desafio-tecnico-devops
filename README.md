@@ -20,20 +20,20 @@ O objetivo deste teste prático é expor os meus conhecimentos em Docker, Nginx,
 - Após fazer o login na sua conta da AWS, busque por EC2 no painel de Gerenciamento da AWS digitando “EC2”. Clique nele, após encontrar.<br>
 - No console do EC2, clique em “Launch Instance”. Logo aparecerá uma janela, em que deve ser escolhido um AMI. Para esse desafio técnico, foi escolhido o Amazon Linux, com as configurações padrões de CPU, memória, subnet, tamanho, volume, etc. Não se esqueça de configurar, também, os grupos de segurança (Security), para que possam passar pela porta 80 (HTTP). Por fim, clique em “Review e Launch”.<br>
 - Selecione um par de chaves, para um acesso seguro à instância via SSH (secure shell) ou RDP. O arquivo estará com o formato “.pem”. Por fim, lance a instância clicando em “Launch Instances”.<br>
-- Para acessar a instância EC2, use o seguinte comando abaixo, usando o terminal: <br>
+- Para acessar a instância EC2, use o seguinte comando abaixo, usando o terminal:
 <code>
 ssh -i "caminho do diretório onde está localizado o arquivo “.pem”" ec2-user@ec2-3-145-34-202.us-east-2.compute.amazonaws.com
 </code><br>
 Se certifique de conferir o ip nas configurações da instância.<br>
-- Uma vez acessado a instância EC2 via SSH, é hora de fazer a instalação do Docker nela, usando os comandos abaixo:<br>
+- Uma vez acessado a instância EC2 via SSH, é hora de fazer a instalação do Docker nela, usando os comandos abaixo:
 <code>
 sudo yum update<br>
 sudo apt-get install docker
 </code><br>
-- Após a instalação do Docker, execute os seguintes comandos:<br>
+- Após a instalação do Docker, execute os seguintes comandos:
 <code>sudo docker start<br>
 sudo usermod -a -G docker ec2-user</code><br>
-- Existem diversas formas de implantar o repositório do teste técnico, nesse caso eu optei por usar o Git.<br>
+- Existem diversas formas de implantar o repositório do teste técnico, nesse caso eu optei por usar o Git:
 <code>
 git clone https://github.com/niklaz4/desafio-tecnico-devops.git
 </code><br>
