@@ -72,4 +72,4 @@ Para criar um deploy automático no Github Actions, com o objetivo de automatiza
 <li>Pronto, agora será necessário criar um Cluster;</li>
 <li>Basta clicar em Create Cluster e deixar as configurações padrões;</li>
 <li>Após criar o Cluster, vá em Create Service. A maioria das configurações aqui são padrões, a única coisa que deve ser alterado é o “Desired Tasks”, que deve ser 2. Insira os nomes dos security groups e insira o Load Balancer criado anteriormente para este projeto;</li>
-<li>Clique em Create. Pronto, os task service foram concluídos;</li></p>Fim.
+<li>Clique em Create. Pronto, os task service foram concluídos;</li></p><br>
