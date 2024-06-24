@@ -27,8 +27,7 @@ Se certifique de conferir o ip nas configurações da instância.<br>
 <code>sudo yum update <br>
 sudo apt-get install docker</code>
 - Após a instalação do Docker, execute os seguintes comandos:
-<code>sudo docker start<br>
-sudo usermod -a -G docker ec2-user</code>
+<code>sudo docker start</code> e <code>sudo usermod -a -G docker ec2-user</code>
 - Existem diversas formas de implantar o repositório do teste técnico, nesse caso eu optei por usar o Git:
 <code> git clone https://github.com/niklaz4/desafio-tecnico-devops.git </code><br>
 - Após clonar o repositório na instância EC2, navegue até o diretório de onde está o diretório e execute o docker-compose.yml. Pronto, os arquivos foram implantados na AWS.</p>
