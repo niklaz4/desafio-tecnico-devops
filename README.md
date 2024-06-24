@@ -24,14 +24,13 @@ O objetivo deste teste prático é expor os meus conhecimentos em Docker, Nginx,
 <code> ssh -i "caminho do diretório onde está localizado o arquivo “.pem”" ec2-user@ec2-3-145-34-202.us-east-2.compute.amazonaws.com </code>
 Se certifique de conferir o ip nas configurações da instância.<br>
 - Uma vez acessado a instância EC2 via SSH, é hora de fazer a instalação do Docker nela, usando os comandos abaixo:
-<code>sudo yum update<br>sudo apt-get install docker</code>
+<code>sudo yum update <br>
+sudo apt-get install docker</code>
 - Após a instalação do Docker, execute os seguintes comandos:
 <code>sudo docker start<br>
-sudo usermod -a -G docker ec2-user</code><br>
+sudo usermod -a -G docker ec2-user</code>
 - Existem diversas formas de implantar o repositório do teste técnico, nesse caso eu optei por usar o Git:
-<code>
-git clone https://github.com/niklaz4/desafio-tecnico-devops.git
-</code><br>
+<code> git clone https://github.com/niklaz4/desafio-tecnico-devops.git </code><br>
 - Após clonar o repositório na instância EC2, navegue até o diretório de onde está o diretório e execute o docker-compose.yml. Pronto, os arquivos foram implantados na AWS.</p>
 
 <b> 3. Melhorias no teste: </b></p>
