@@ -11,8 +11,8 @@ O objetivo deste teste prático é expor os meus conhecimentos em Docker, Nginx,
 - Criação de um contêiner para o PHP-FPM para receber as requisições do Nginx na porta 9000 para os arquivos .php do projeto:</p>
   <code>  docker run --name php-fpm-container -d php:7.4-fpm</code></p>
 - Criação de um arquivo index.php simples que retorne o texto "Olá, mundo!":</p>
-    <code>
-	<?php<br>
+    <code><br>
+	<?php <br>
 	echo "Olá, mundo!";<br>
 	?><br>
      </code><br>
