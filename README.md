@@ -11,11 +11,6 @@ O objetivo deste teste prático é expor os meus conhecimentos em Docker, Nginx,
 - Criação de um contêiner para o PHP-FPM para receber as requisições do Nginx na porta 9000 para os arquivos .php do projeto:</p>
   <code>  docker run --name php-fpm-container -d php:7.4-fpm</code></p>
 - Criação de um arquivo index.php simples que retorne o texto "Olá, mundo!":</p>
-    <code><br>
-	<?php <br>
-	echo "Olá, mundo!";<br>
-	?><br>
-     </code><br>
 - Salvar o arquivo como `index.php` no diretório de trabalho.</p>
 - Configuração do Nginx para servir o arquivo PHP, salvando-o como nginx.conf:</p>
 - Criar um ambiente Dockerfile, baseado na imagem php:7.4-fpm, que tem como o objetivo de servir aplicações PHP em ambientes de produção: 
