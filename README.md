@@ -24,10 +24,7 @@ O objetivo deste teste prático é expor os meus conhecimentos em Docker, Nginx,
 <code> ssh -i "caminho do diretório onde está localizado o arquivo “.pem”" ec2-user@ec2-3-145-34-202.us-east-2.compute.amazonaws.com </code>
 Se certifique de conferir o ip nas configurações da instância.<br>
 - Uma vez acessado a instância EC2 via SSH, é hora de fazer a instalação do Docker nela, usando os comandos abaixo:
-<code>
-sudo yum update<br>
-sudo apt-get install docker
-</code><br>
+<code>sudo yum update<br>sudo apt-get install docker</code>
 - Após a instalação do Docker, execute os seguintes comandos:
 <code>sudo docker start<br>
 sudo usermod -a -G docker ec2-user</code><br>
