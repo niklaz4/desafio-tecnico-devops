@@ -6,9 +6,9 @@ O objetivo deste teste prático é expor os meus conhecimentos em Docker, Nginx,
  
 <b> 1. Configuração do ambiente local usando estrutura de microsserviços:</b>
 - Instalação do <a href="https://hub.docker.com/">Docker</a> no ambiente local.<br>
-- Criação de um container Docker para executar um servidor web Nginx, na porta 80 (HTTP):<br>
+- Criação de um container Docker para executar um servidor web Nginx, na porta 80 (HTTP):
    <code> docker run --name nginx-container -p 80:80 -d nginx:latest </code></p>
-- Criação de um contêiner para o PHP-FPM para receber as requisições do Nginx na porta 9000 para os arquivos .php do projeto:</p>
+- Criação de um contêiner para o PHP-FPM para receber as requisições do Nginx na porta 9000 para os arquivos .php do projeto:
   <code>  docker run --name php-fpm-container -d php:7.4-fpm</code></p>
 - Criação de um arquivo index.php simples que retorne o texto "Olá, mundo!":</p>
 - Salvar o arquivo como `index.php` no diretório de trabalho.</p>
@@ -37,7 +37,7 @@ sudo usermod -a -G docker ec2-user</code><br>
 <code>
 git clone https://github.com/niklaz4/desafio-tecnico-devops.git
 </code><br>
-- Após clonar o repositório na instância EC2, navegue até o diretório de onde está o diretório e execute o docker-compose.yml. Pronto, os arquivos foram implantados na AWS.<br>
+- Após clonar o repositório na instância EC2, navegue até o diretório de onde está o diretório e execute o docker-compose.yml. Pronto, os arquivos foram implantados na AWS.</p>
 
 <b> 3. Melhorias no teste: </b></p>
 - Implementação de um container para o MySQL, que recebe conexões na porta 3306 e o arquivo index.php, com o objetivo de buscar algo do banco de dados. Nesse teste, irá retornar Fatal error: Uncaught Error: Class 'mysqli' not found in /var/www/html/index.php:11 Stack trace: #0 {main} thrown in /var/www/html/index.php on line 11, por não ter encontrado algum banco de dados a ser retornado.<br>
