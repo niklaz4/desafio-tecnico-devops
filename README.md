@@ -22,7 +22,7 @@ O objetivo deste teste prático é expor os meus conhecimentos em Docker, Nginx,
 - Selecione um par de chaves, para um acesso seguro à instância via SSH (secure shell) ou RDP. O arquivo estará com o formato “.pem”. Por fim, lance a instância clicando em “Launch Instances”.<br>
 - Para acessar a instância EC2, use o seguinte comando abaixo, usando o terminal: <br>
 <code>
-ssh -i <caminho do diretório onde está localizado o arquivo “.pem”> ec2-user@<ip da instância>
+ssh -i "caminho do diretório onde está localizado o arquivo “.pem”" ec2-user@ec2-3-145-34-202.us-east-2.compute.amazonaws.com
 </code><br>
 Se certifique de conferir o ip nas configurações da instância.<br>
 - Uma vez acessado a instância EC2 via SSH, é hora de fazer a instalação do Docker nela, usando os comandos abaixo:<br>
