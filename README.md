@@ -35,19 +35,20 @@ sudo apt-get install docker</code>
 <b> 3. Melhorias no teste: </b></p>
 - Implementação de um container para o MySQL, que recebe conexões na porta 3306 e o arquivo index.php, com o objetivo de buscar algo do banco de dados. Nesse teste, irá retornar Fatal error: Uncaught Error: Class 'mysqli' not found in /var/www/html/index.php:11 Stack trace: #0 {main} thrown in /var/www/html/index.php on line 11, por não ter encontrado algum banco de dados a ser retornado.<br>
 Para criar um deploy automático no Github Actions, com o objetivo de automatizar e fazer pipelines de CI/CD no processo de implantação de código em uma ambiente de produção como a instância EC2, foi criado um workflow.<br>
-- Foi configurado um load balancer na AWS para distribuir entre várias instâncias EC2 executando a aplicação em PHP. Para isso, foi necessário efetuar os seguintes passos: <li>Criar um repositório no Elastic Container Registry.</li>
-<li>Buscar por ECR no Gerenciador do AWS;</li>
-<li>Clicar em Get Started;</li>
-<li>Em Visibility Settings, deixar como private;</li>
-<li>Dar um nome para o repositorio. Neste teste, chamamos de “scidesafio-repo”;</li>
-<li>No Gerenciador do AWS, buscar por IAM (Identity and Acess Management);</li>
-<li>Criar um usuário > Create Roles -> AdministratorAccess;</li>
-<li>Criar uma chave de acesso (Access Key), usando CLI;</li>
-<li>Baixar o arquivo .csv após clicar em next;</li>
-<li>Ir até a sua instância EC2 e digitar no terminal “aws configure”;</li>
-<li>No terminal, inserir as credenciais obtidas no arquivo .csv;</li>
-<li>Em seguida, inserir a região (us-east-1);</li>
-<li>No último campo, apenas dar enter e terminará o seu cadastro de usuário na instância;</p>
+- Foi configurado um load balancer na AWS para distribuir entre várias instâncias EC2 executando a aplicação em PHP. Para isso, foi necessário efetuar os seguintes passos:
+  <ol>Criar um repositório no Elastic Container Registry.</ol>
+  <ol>Buscar por ECR no Gerenciador do AWS;</ol>
+  <ol>Clicar em Get Started;</ol>
+  <ol>Em Visibility Settings, deixar como private;</ol>
+  <ol>Dar um nome para o repositorio. Neste teste, chamamos de “scidesafio-repo”;</ol>
+  <ol>No Gerenciador do AWS, buscar por IAM (Identity and Acess Management);</ol>
+  <ol>Criar um usuário > Create Roles -> AdministratorAccess;</ol>
+  <ol>Criar uma chave de acesso (Access Key), usando CLI;</ol>
+  <ol>Baixar o arquivo .csv após clicar em next;</ol>
+  <ol>Ir até a sua instância EC2 e digitar no terminal “aws configure”;</ol>
+  <ol>No terminal, inserir as credenciais obtidas no arquivo .csv;</ol>
+  <ol>Em seguida, inserir a região (us-east-1);</ol>
+  <ol>No último campo, apenas dar enter e terminará o seu cadastro de usuário na instância;</ol></p>
 - Agora que você está logado, basta seguir os passos a passo:<br>
 <li>Inserir no terminal da instância EC2: <code>aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 533267002509.dkr.ecr.us-east-2.amazonaws.com</code></li>
 <li>E fazer a anexação das imagens, usando docker tag: <code> docker tag scidesafio-repo:latest 533267002509.dkr.ecr.us-east-2.amazonaws.com/scidesafio-repo:latest</code></li>
