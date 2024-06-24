@@ -14,7 +14,7 @@ if ($mysqli->connect_error) {
     die("Erro na conexão ao MySQL: " . $mysqli->connect_error);
 }
 
-$sql = "SELECT * FROM exemplo";
+$sql = "SELECT * FROM host";
 $result = $mysqli->query($sql);
 
 if ($result->num_rows > 0) {
