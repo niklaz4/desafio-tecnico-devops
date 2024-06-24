@@ -34,8 +34,8 @@ sudo apt-get install docker</code>
 
 <b> 3. Melhorias no teste: </b></p>
 - Implementação de um container para o MySQL, que recebe conexões na porta 3306 e o arquivo index.php, com o objetivo de buscar algo do banco de dados. Nesse teste, irá retornar Fatal error: Uncaught Error: Class 'mysqli' not found in /var/www/html/index.php:11 Stack trace: #0 {main} thrown in /var/www/html/index.php on line 11, por não ter encontrado algum banco de dados a ser retornado.<br>
-Para criar um deploy automático no Github Actions, com o objetivo de automatizar e fazer pipelines de CI/CD no processo de implantação de código em uma ambiente de produção como a instância EC2, foi criado um workflow.
-- Foi configurado um load balancer na AWS para distribuir entre várias instâncias EC2 executando a aplicação em PHP. Para isso, foi necessário efetuar os seguintes passos:<br>
+Para criar um deploy automático no Github Actions, com o objetivo de automatizar e fazer pipelines de CI/CD no processo de implantação de código em uma ambiente de produção como a instância EC2, foi criado um workflow.<br>
+- Foi configurado um load balancer na AWS para distribuir entre várias instâncias EC2 executando a aplicação em PHP. Para isso, foi necessário efetuar os seguintes passos:
 <li>Criar um repositório no Elastic Container Registry.</li>
 <li>Buscar por ECR no Gerenciador do AWS;</li>
 <li>Clicar em Get Started;</li>
