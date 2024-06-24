@@ -21,9 +21,7 @@ O objetivo deste teste prático é expor os meus conhecimentos em Docker, Nginx,
 - No console do EC2, clique em “Launch Instance”. Logo aparecerá uma janela, em que deve ser escolhido um AMI. Para esse desafio técnico, foi escolhido o Amazon Linux, com as configurações padrões de CPU, memória, subnet, tamanho, volume, etc. Não se esqueça de configurar, também, os grupos de segurança (Security), para que possam passar pela porta 80 (HTTP). Por fim, clique em “Review e Launch”.<br>
 - Selecione um par de chaves, para um acesso seguro à instância via SSH (secure shell) ou RDP. O arquivo estará com o formato “.pem”. Por fim, lance a instância clicando em “Launch Instances”.<br>
 - Para acessar a instância EC2, use o seguinte comando abaixo, usando o terminal:
-<code>
-ssh -i "caminho do diretório onde está localizado o arquivo “.pem”" ec2-user@ec2-3-145-34-202.us-east-2.compute.amazonaws.com
-</code><br>
+<code> ssh -i "caminho do diretório onde está localizado o arquivo “.pem”" ec2-user@ec2-3-145-34-202.us-east-2.compute.amazonaws.com </code>
 Se certifique de conferir o ip nas configurações da instância.<br>
 - Uma vez acessado a instância EC2 via SSH, é hora de fazer a instalação do Docker nela, usando os comandos abaixo:
 <code>
